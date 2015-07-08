@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :admin do
+    get  'sign_in' => 'admin#sign_in'
+    post 'sign_in' => 'admin#sign_create'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
