@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :games, :only => [:index] do
+    member do
+      get  'show' => 'games#show'
+      post 'show' => 'games#receive'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
