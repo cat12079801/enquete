@@ -11,6 +11,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'activerecord-session_store'
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'execjs'
+gem 'less-rails'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'rspec-rails'
