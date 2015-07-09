@@ -1,0 +1,38 @@
+<%= form_for [:admin, @game] do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this admin_game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label_tag 'game[name]', 'Title', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'game[image]', 'Image', :class => "col-lg-5 control-label" %>
+    <div class="col-lg-10">
+      <%= f.file_field :image, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'game[description]', 'Description', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_area :description, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

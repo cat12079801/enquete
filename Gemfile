@@ -16,6 +16,7 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'execjs'
 gem 'less-rails'
 gem 'therubyracer'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails'
