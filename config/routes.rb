@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     delete 'sign_out' => 'admin#sign_out'
     get    '/'        => 'admin#index'
     get    'index'    => redirect('/admin')
-    resources :games, :controller => 'admin/games', :as => 'admin_games' do
-    end
+    resources :games, :controller => 'admin/games', :as => 'admin_games'
+    resources :authors, :controller => 'admin/authors', :as => 'admin_authors'
   end
 
   get '/login' => redirect('/admin/sign_in')
