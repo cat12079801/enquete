@@ -18,7 +18,12 @@
         <td><%= image_tag(game.image_url, height: 23) if game.image.present? %></td>
         <td><%= game.name %></td>
         <% if game.author.present? %>
-        <td><%= game.author.first.name %></td>
+          <td>
+            <% game.author.each_with_index do |author, i| %>
+              <%= ', ' unless i == 0 %>
+              <%= author.name %>
+            <% end %>
+          </td>
         <% else %>
         <td></td>
         <% end %>
