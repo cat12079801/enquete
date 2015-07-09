@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     post 'sign_in' => 'admin#sign_create'
   end
 
+  get '/login' => redirect('/admin/sign_in')
+  get '/sign_in' => redirect('/admin/sign_in')
+  get '/admin/login' => redirect('/admin/sign_in')
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
