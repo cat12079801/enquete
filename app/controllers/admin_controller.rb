@@ -1,8 +1,8 @@
 class AdminController < ApplicationController
   layout 'admin'
 
-  before_filter :get_current_user, :except => [:sign_in, :sign_create]
-  before_filter :already_login?, :only => [:sign_in, :sign_create]
+  before_action :get_current_user, :except => [:sign_in, :sign_create]
+  before_action :already_login?, :only => [:sign_in, :sign_create]
 
   def sign_in
     if already_login?
@@ -37,17 +37,5 @@ class AdminController < ApplicationController
   end
 
   def index
-  end
-
-  private def get_current_user
-    if cookies[:guest_name].blank? or cookies[:session].blank?
-      redirect_to :action => 'sign_in'
-    else
-      @current_user = User.find_by_name(cookies[:guest_name])
-    end
-  end
-
-  private def already_login?
-    Session.where(:sha256_cookie => Digest::SHA256.hexdigest(cookies[:session]), :finish => false).present?
   end
 end

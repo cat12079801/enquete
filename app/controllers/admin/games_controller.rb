@@ -1,5 +1,8 @@
 class Admin::GamesController < ApplicationController
+  layout 'admin'
+
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :get_current_user
 
   # GET /admin/games
   # GET /admin/games.json
