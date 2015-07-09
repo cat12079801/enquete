@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_admin_author_path(@admin_author) %> |
+<h2>name: <%= @author.name %></h2>
+
+<h2>account: <%= @author.account %></h2>
+
+<%= link_to 'Edit', edit_admin_author_path(@author) %> |
 <%= link_to 'Back', admin_authors_path %>
