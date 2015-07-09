@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   end
 
   scope :admin do
-    get  'sign_in' => 'admin#sign_in'
-    post 'sign_in' => 'admin#sign_create'
+    get    'sign_in'  => 'admin#sign_in'
+    post   'sign_in'  => 'admin#sign_create'
+    delete 'sign_out' => 'admin#sign_out'
+    get    '/'        => 'admin#index'
+    get    'index'    => redirect('/admin')
   end
 
   get '/login' => redirect('/admin/sign_in')
