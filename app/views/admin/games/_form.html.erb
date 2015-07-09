@@ -34,6 +34,20 @@
   </div>
 
   <div class="form-group">
+    <%= label_tag 'game[author]', 'Author', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <% @authors.each do |author| %>
+        <div class="checkbox">
+          <label>
+            <%= check_box_tag "game[author][#{author.id}]", true, author.game.where(:id => @game.id).present?, {} %>
+            <%= author.name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2">
       <div class="actions">
         <%= f.submit :class => "btn btn-primary" %>

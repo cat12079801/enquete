@@ -15,10 +15,12 @@ class Admin::GamesController < ApplicationController
   # GET /admin/games/new
   def new
     @game = Game.new
+    @authors = Author.all
   end
 
   # GET /admin/games/1/edit
   def edit
+    @authors = Author.all
   end
 
   # POST /admin/games
@@ -28,6 +30,9 @@ class Admin::GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        (params[:game][:author] ||= {}).each do |key, value|
+          @game.author << Author.find(key.to_i)
+        end
         format.html { redirect_to [:admin, @game], notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
@@ -42,7 +47,11 @@ class Admin::GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        GameAuthor.destroy_all(:game_id => @game.id)
+        (params[:game][:author] ||= {}).each do |key, value|
+          @game.author << Author.find(key.to_i)
+        end
+        format.html { redirect_to [:admin, @game], notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
@@ -69,6 +78,6 @@ class Admin::GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :image, :description)
+      params.require(:game).permit(:name, :image, :description, :author)
     end
 end
