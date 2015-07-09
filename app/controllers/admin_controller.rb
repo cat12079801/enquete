@@ -5,8 +5,11 @@ class AdminController < ApplicationController
   before_filter :already_login?, :only => [:sign_in, :sign_create]
 
   def sign_in
-    redirect_to :action => 'index' if already_login?
-    render :layout => 'application'
+    if already_login?
+      redirect_to :action => 'index'
+    else
+      render :layout => 'application'
+    end
   end
 
   def sign_create
