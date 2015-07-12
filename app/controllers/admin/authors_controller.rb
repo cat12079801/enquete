@@ -1,5 +1,8 @@
 class Admin::AuthorsController < ApplicationController
+  layout 'admin'
+
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :get_current_user
 
   # GET /admin/authors
   # GET /admin/authors.json
