@@ -1,2 +1,25 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<% @games.each do |game| %>
+  <div class="game-box">
+    <%= game.name %>
+    <br>
+    <div class="image-box hogehoge"><%= image_tag(game.image_url) if game.image.present? %></div>
+    <br>
+    <%= game.description %>
+  </div>
+<% end %>
+
+<script>
+$(function(){
+  $(".image-box img").each(function(){
+    $(this).bind("load", function(){
+      if($(this).width() > $(this).height()){
+        $(this).css("height", "300px");
+        $(this).css("left", -($(this).width()-300)/2 + "px");
+      }else{
+        $(this).css("width", "300px");
+        $(this).css("top", -($(this).height()-300)/2 + "px");
+      }
+    });
+  });
+});
+</script>
