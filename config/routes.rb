@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'games#index'
   resources :games, :only => [:index] do
     member do
-      get  'show' => 'games#show'
-      post 'show' => 'games#receive'
+      get  '' => 'games#show'
+      post '' => 'games#receive', :as => 'collect'
     end
   end
 

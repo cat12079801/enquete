@@ -1,7 +1,7 @@
 class CreateCollects < ActiveRecord::Migration
   def change
     create_table :collects do |t|
-      t.belongs_to :game_id, index: true, null: false
+      t.belongs_to :game, index: true, null: false
       t.integer :evaluation
       t.string :guest_name
       t.text :impressions

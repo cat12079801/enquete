@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @collect = Collect.new
   end
 
   def receive

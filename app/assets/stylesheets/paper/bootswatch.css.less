@@ -236,63 +236,63 @@ select.form-control {
   }
 }
 
-input[type="radio"],
-.radio input[type="radio"],
-.radio-inline input[type="radio"] {
-  position: relative;
-  margin-top: 5px;
-  margin-right: 4px;
-  vertical-align: -4px;
-  border: none;
-  background-color: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:before,
-  &:after {
-    content: "";
-    display: block;
-    width: 18px;
-    height: 18px;
-    margin-top: -3px;
-    border-radius: 50%;
-    .transition(240ms);
-  }
-
-  &:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: @brand-primary;
-    .scale(0);
-  }
-
-  &:after {
-    border: 2px solid @gray;
-  }
-
-  &:checked:before {
-    .scale(0.5);
-  }
-
-  &:disabled:checked:before {
-    background-color: @gray-light;
-  }
-
-  &:checked:after {
-    border-color: @brand-primary;
-  }
-
-  &:disabled:after,
-  &:disabled:checked:after {
-    border-color: @gray-light;
-  }
-}
+//input[type="radio"],
+//.radio input[type="radio"],
+//.radio-inline input[type="radio"] {
+//  position: relative;
+//  margin-top: 5px;
+//  margin-right: 4px;
+//  vertical-align: -4px;
+//  border: none;
+//  background-color: transparent;
+//  -webkit-appearance: none;
+//  appearance: none;
+//  cursor: pointer;
+//
+//  &:focus {
+//    outline: none;
+//  }
+//
+//  &:before,
+//  &:after {
+//    content: "";
+//    display: block;
+//    width: 18px;
+//    height: 18px;
+//    margin-top: -3px;
+//    border-radius: 50%;
+//    .transition(240ms);
+//  }
+//
+//  &:before {
+//    position: absolute;
+//    left: 0;
+//    top: 0;
+//    background-color: @brand-primary;
+//    .scale(0);
+//  }
+//
+//  &:after {
+//    border: 2px solid @gray;
+//  }
+//
+//  &:checked:before {
+//    .scale(0.5);
+//  }
+//
+//  &:disabled:checked:before {
+//    background-color: @gray-light;
+//  }
+//
+//  &:checked:after {
+//    border-color: @brand-primary;
+//  }
+//
+//  &:disabled:after,
+//  &:disabled:checked:after {
+//    border-color: @gray-light;
+//  }
+//}
 
 input[type="checkbox"],
 .checkbox input[type="checkbox"],
