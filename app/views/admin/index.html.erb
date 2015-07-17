@@ -24,7 +24,13 @@
           <% end %>
         </td>
         <td><%= collect.guest_name %></td>
-        <td><%= collect.evaluation %></td>
+        <td>
+          <%= 'とても面白い' if collect.evaluation == 1 %>
+          <%= '面白い' if collect.evaluation == 2 %>
+          <%= '普通' if collect.evaluation == 3 %>
+          <%= 'あまり面白くない' if collect.evaluation == 4 %>
+          <%= '面白くない' if collect.evaluation == 5 %>
+        </td>
         <td><%= collect.impressions %></td>
       </tr>
     <% end %>
