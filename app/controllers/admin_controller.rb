@@ -37,5 +37,6 @@ class AdminController < ApplicationController
   end
 
   def index
+    @collects = Collect.all
   end
 end

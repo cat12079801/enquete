@@ -4,7 +4,7 @@
 </div>
 
 <% @games.each do |game| %>
-  <a href="/games/<%= game.id %>">
+  <%= link_to("/games/#{game.id}?guest_name=#{@collect.guest_name}") do %>
     <div class="game-box">
       <%= game.name %>
       <br>
@@ -16,5 +16,5 @@
       <%= game.description %>
       <% end %>
     </div>
-  </a>
+  <% end %>
 <% end %>

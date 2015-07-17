@@ -1,2 +1,65 @@
 <h2><%= link_to 'Games', admin_games_path %></h2>
 <h2><%= link_to 'Authors', admin_authors_path %></h2>
+
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>作品名</th>
+      <th>製作者</th>
+      <th>名前っぽい何か</th>
+      <th>評価</th>
+      <th>感想</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collects.each do |collect| %>
+      <tr>
+        <td><%= collect.game.name %></td>
+        <td>
+          <% collect.game.author.each_with_index do |author, i| %>
+            <%= ', ' unless i == 0 %>
+            <%= author.name %>
+          <% end %>
+        </td>
+        <td><%= collect.guest_name %></td>
+        <td><%= collect.evaluation %></td>
+        <td><%= collect.impressions %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>名前っぽい何か</th>
+      <th>一番すきなゲーム</th>
+      <th>やりたいゲーム</th>
+      <th>c3知ったばしょ</th>
+      <th>将来いきたい機関とか職業とか</th>
+      <th>九州工業大学に来たいか</th>
+      <th>知ってる単語たち</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% done = [] %>
+    <% @collects.each do |collect| %>
+      <% if done.index(collect.guest_name).nil? %>
+        <% done.push(collect.guest_name) %>
+        <tr>
+          <td><%= collect.guest_name %></td>
+          <td><%= collect.most_fav %></td>
+          <td><%= collect.want_game %></td>
+          <td><%= collect.where_c3 %></td>
+          <td><%= collect.shourai %></td>
+          <td><%= collect.kit %></td>
+          <td><%= collect.know %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
