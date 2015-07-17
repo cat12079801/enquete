@@ -1,7 +1,9 @@
 <div class="game-box">
-  <div class="game-box" style="float: left;"><%= image_tag(@game.image_url) if @game.image.present? %></div>
-  <h2 style="float: right;"><%= @game.name %></h1>
+<div class="game-box" style="float: left;"><%= image_tag(@game.image_url, :height => 300) if @game.image.present? %></div>
+  <div style="float: right; width: 300px;">
+  <h2><%= @game.name %></h2>
   <p><%= @game.description %></p>
+  </div>
 </div>
 
 <%= form_for collect_game_path(@game), :class => "form-horizontal" do |f| %>
@@ -33,19 +35,75 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag 'collect[impression]', '感想', :class => "col-lg-2 control-label" %>
+    <%= label_tag 'collect[impressions]', '感想', :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <%= text_area 'collect[impression]', '', :class => "form-control" %>
+      <%= text_area 'collect[impressions]', '', :class => "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
     <%= label_tag 'collect[guest_name]', '名前(ハンドルネームみたいなもの)', :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
+    <div class="col-lg-10 hiroi1">
       <%= text_field_tag 'collect[guest_name]', '', :class => "form-control" %>
     </div>
   </div>
 
+  <div class="form-group">
+    <%= label_tag 'collect[most_fav]', '今までやった中で一番面白かったゲームはなんですか？', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi2">
+      <%= text_field_tag 'collect[most_fav]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[want_game]', 'やってみたいゲームは何ですか？', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi1">
+      <%= text_field_tag 'collect[want_game]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[where_c3]', 'C3をどこで知りましたか？', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi2">
+      <%= text_field_tag 'collect[where_c3]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[shourai]', '将来働いてみたい研究機関、気になっている職業があれば教えてください。', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi2">
+      <%= text_field_tag 'collect[shourai]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[kit]', '将来、九州工業大学に入学する気、もしくはさせる気はありますか？', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi2">
+      <%= text_field_tag 'collect[kit]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[want_game]', 'やってみたいゲームは何ですか？', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10 hiroi1">
+      <%= text_field_tag 'collect[want_game]', '', :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'collect[know]', 'この中から知っている単語があればチェックをつけてください。', :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <% tangos = ['ゆきのさつき', 'ドワンゴ', 'HIKAKIN', '稲船敬二', 'シェムニー', 'constexpr', 'LISP', 'Linux', 'GitHub', 'Twitter', 'はてなブックマーク', 'Reddit', 'Oculus', 'Rift', 'Project Morpheus', 'スターオーシャン5', '岩田聡', 'DTM', 'pepper', 'Lua', '吉里吉里', 'コミックマーケット', 'Bio_100%', 'Ruby', 'C', 'C++', 'C#'] %>
+      <% tangos.each do |tango| %>
+        <div class="checkbox" style="display: inline-block; width: 300px;">
+          <label>
+            <%= check_box_tag "collect[know][#{tango}]", true, false, {} %>
+            <%= tango %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2">
       <%= f.submit '送信', :class => "btn btn-primary" %>

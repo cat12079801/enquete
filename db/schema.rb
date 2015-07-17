@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714165334) do
+ActiveRecord::Schema.define(version: 20150717143231) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20150714165334) do
     t.string   "come_from",   limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "most_fav",    limit: 255
+    t.string   "want_game",   limit: 255
+    t.string   "where_c3",    limit: 255
+    t.string   "shourai",     limit: 255
+    t.string   "kit",         limit: 255
+    t.text     "know",        limit: 65535
   end
 
   add_index "collects", ["game_id"], name: "index_collects_on_game_id", using: :btree

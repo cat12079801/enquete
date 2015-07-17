@@ -1,0 +1,20 @@
+<div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>回答ありがとうございました！</strong> 他の作品についてもよろしければ回答お願いします。
+</div>
+
+<% @games.each do |game| %>
+  <a href="/games/<%= game.id %>">
+    <div class="game-box">
+      <%= game.name %>
+      <br>
+      <div class="image-box hogehoge"><%= image_tag(game.image_url) if game.image.present? %></div>
+      <br>
+      <% if game.description.length > 20 %>
+      <%= game.description[0,20] + "..." %>
+      <% else %>
+      <%= game.description %>
+      <% end %>
+    </div>
+  </a>
+<% end %>

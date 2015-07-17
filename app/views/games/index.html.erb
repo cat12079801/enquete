@@ -5,7 +5,11 @@
       <br>
       <div class="image-box hogehoge"><%= image_tag(game.image_url) if game.image.present? %></div>
       <br>
+      <% if game.description.length > 20 %>
+      <%= game.description[0,20] + "..." %>
+      <% else %>
       <%= game.description %>
+      <% end %>
     </div>
   </a>
 <% end %>
