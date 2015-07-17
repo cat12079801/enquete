@@ -1,3 +1,9 @@
+<div class="game-box">
+  <div class="game-box" style="float: left;"><%= image_tag(@game.image_url) if @game.image.present? %></div>
+  <h2 style="float: right;"><%= @game.name %></h1>
+  <p><%= @game.description %></p>
+</div>
+
 <%= form_for collect_game_path(@game), :class => "form-horizontal" do |f| %>
   <fieldset>
   <legend>アンケート</legend>
@@ -34,61 +40,9 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag 'collect[guest_name]', '名前', :class => "col-lg-2 control-label" %>
+    <%= label_tag 'collect[guest_name]', '名前(ハンドルネームみたいなもの)', :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
       <%= text_field_tag 'collect[guest_name]', '', :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-lg-2 control-label">性別</label>
-    <div class="col-lg-10">
-      <div class="radio">
-        <label>
-          <input type="radio" name="collect[gender]" id="optionsRadios1" value="man" checked="">
-          男
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="collect[gender]" id="optionsRadios2" value="woman">
-          女
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-lg-2 control-label">年齢</label>
-    <div class="col-lg-10">
-      <%= text_field_tag 'collect[age]', '', :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-lg-2 control-label">出身</label>
-    <div class="col-lg-10">
-        <select name="collect[come-from]" class="form-control" id="select">
-          <option value='福岡県-福岡市内'>福岡県-福岡市内</option>
-          <option value='福岡県-福岡市周辺'>福岡県-福岡市周辺</option>
-          <option value='福岡県-北九州'>福岡県-北九州</option>
-          <option value='福岡県-筑豊地方'>福岡県-筑豊</option>
-          <option value='福岡県-筑後地方'>福岡県-筑後</option>
-          <option value='佐賀県'>佐賀県</option>
-          <option value='長崎県'>長崎県</option>
-          <option value='大分県'>大分県</option>
-          <option value='熊本県'>熊本県</option>
-          <option value='宮崎県'>宮崎県</option>
-          <option value='鹿児島県'>鹿児島県</option>
-          <option value='沖縄県'>沖縄県</option>
-          <option value='中国地方'>中国地方</option>
-          <option value='四国地方'>四国地方</option>
-          <option value='関西地方'>関西地方</option>
-          <option value='中部地方'>中部地方</option>
-          <option value='関東地方'>関東地方</option>
-          <option value='東北地方'>東北地方</option>
-          <option value='北海道地方'>北海道地方</option>
-        </select>
     </div>
   </div>
 
@@ -99,3 +53,19 @@
   </div>
   </fieldset>
 <% end %>
+
+<script>
+$(function(){
+  $(".image-box img").each(function(){
+    $(this).bind("load", function(){
+      if($(this).width() > $(this).height()){
+        $(this).css("height", "600px");
+        $(this).css("left", -($(this).width()-600)/2 + "px");
+      }else{
+        $(this).css("width", "600px");
+        $(this).css("top", -($(this).height()-600)/2 + "px");
+      }
+    });
+  });
+});
+</script>

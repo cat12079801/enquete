@@ -12,9 +12,14 @@
     height: 300px;
     width: 300px;
     overflow: hidden;
+  .image-box.box-large {
+    height: 600px;
+    width: 600px;
+  }
 
     img {
       position: absolute;
     }
   }
 }
+
