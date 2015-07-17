@@ -1,11 +1,13 @@
 <% @games.each do |game| %>
-  <div class="game-box">
-    <%= game.name %>
-    <br>
-    <div class="image-box hogehoge"><%= image_tag(game.image_url) if game.image.present? %></div>
-    <br>
-    <%= game.description %>
-  </div>
+  <a href="./games/<%= game.id %>">
+    <div class="game-box">
+      <%= game.name %>
+      <br>
+      <div class="image-box hogehoge"><%= image_tag(game.image_url) if game.image.present? %></div>
+      <br>
+      <%= game.description %>
+    </div>
+  </a>
 <% end %>
 
 <script>
